@@ -37,6 +37,7 @@ A simple and interactive command-line interface (CLI) project built with Python 
 # Clone the repo
 git clone https://github.com/HarshaCodex/notes-manager-python-cli.git
 cd notes-manager-python-cli
+cd notes-manager
 
 # Run the app
 python main.py
