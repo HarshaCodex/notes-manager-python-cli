@@ -1,3 +1,10 @@
+import json
+import os
+
+if not os.path.exists("notes.json"):
+    with open("notes.json", "w") as notes:
+        json.dump([], notes)
+
 header = '===== Personal Notes Manger ====='
 
 menu = '''1. Add a new note
@@ -34,3 +41,4 @@ while True:
         break
     else:
         print('Please enter a valid choice between 1 and 6.\n')
+
