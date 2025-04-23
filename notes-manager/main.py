@@ -28,6 +28,22 @@ while True:
 
     if choice == 1:
         print('📌 You chose to add a new note.\n')
+        title = input("Enter note title: ")
+        content = input("Enter note content: ")
+
+        new_note = {
+            "title": title,
+            "content": content
+        }
+
+        with open("notes.json", "r") as note:
+            notes = json.load(note)
+
+        notes.append(new_note)
+
+        with open("notes.json", "w") as note:
+            json.dump(notes, note, indent=4)
+            
     elif choice == 2:
         print('📋 You chose to view all notes.\n')
     elif choice == 3:
