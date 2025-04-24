@@ -5,7 +5,7 @@ if not os.path.exists("notes.json"):
     with open("notes.json", "w") as notes:
         json.dump([], notes)
 
-header = '===== Personal Notes Manger ====='
+header = '\n===== Personal Notes Manger ====='
 
 menu = '''1. Add a new note
 2. View all notes
@@ -43,9 +43,20 @@ while True:
 
         with open("notes.json", "w") as note:
             json.dump(notes, note, indent=4)
-            
+
     elif choice == 2:
         print('📋 You chose to view all notes.\n')
+        with open("notes.json", "r") as f:
+            notes = json.load(f)
+        
+        if not notes:
+            print("There are no notes present!!!")
+        else:
+            print("\n🗒️ Your Notes:\n")
+            for index, item in enumerate(notes, start=1):
+                print(f"{index}. {item['title']}")
+                print(f'   {item['content']}')
+
     elif choice == 3:
         print('🔍 You chose to search notes by keyword.\n')
     elif choice == 4:
