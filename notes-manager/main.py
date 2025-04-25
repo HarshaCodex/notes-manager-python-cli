@@ -59,6 +59,23 @@ while True:
 
     elif choice == 3:
         print('🔍 You chose to search notes by keyword.\n')
+        keyword = input("🔎 Enter keyword to search: ").lower()
+
+        with open("notes.json", "r") as f:
+            notes = json.load(f)
+        
+        matching_notes = [
+            note for note in notes
+            if keyword in note['title'].lower() or keyword in note['content'].lower()
+        ]
+
+        if not matching_notes:
+            print("❌ No matching notes found.\n")
+        else:
+            for index, note in enumerate(matching_notes, start=1):
+                print(f"{index}. {note['title']}")
+                print(f"   {note['content']}")
+            
     elif choice == 4:
         print('✏️ You chose to update a note.\n')
     elif choice == 5:
