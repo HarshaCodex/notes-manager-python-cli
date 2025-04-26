@@ -40,4 +40,4 @@ cd notes-manager-python-cli
 cd notes-manager
 
 # Run the app
-python main.py
+python3 main.py
