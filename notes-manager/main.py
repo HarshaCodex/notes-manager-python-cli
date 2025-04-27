@@ -121,9 +121,10 @@ while True:
                 note_to_delete = int(input("Enter the note number to delete: "))
                 if 1 <= note_to_delete <= len(notes):
                     notes.pop(note_to_delete - 1)
-                    print("\nNote deleted successfully")
+                    
                     with open("notes.json", "w") as f:
                         json.dump(notes, f, indent=4)
+                    print("\nNote deleted successfully")
                 else:
                     print("❌ Invalid note number.\n")
             except ValueError:
