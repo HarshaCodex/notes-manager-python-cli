@@ -78,6 +78,33 @@ while True:
             
     elif choice == 4:
         print('✏️ You chose to update a note.\n')
+        with open("notes.json", "r") as f:
+            notes = json.load(f)
+        
+        if not notes:
+            print("📭 No notes to update.\n")
+        else:
+            print("\n Your notes:")
+            for index, note in enumerate(notes, start=1):
+                print(f"{index}. {note['title']}")
+
+            try:
+                note_to_update = int(input("Enter the note number to update: "))
+                if 1 <= note_to_update <= len(notes):
+                    title = input("Enter title to update: ")
+                    content = input("Enter content: ")
+
+                    notes[note_to_update - 1]['title'] = title
+                    notes[note_to_update - 1]['content'] = content
+
+                    with open("notes.json", "w") as f:
+                        json.dump(notes, f, indent=4)
+                    
+                    print("\nNote updated successfully")
+                else:
+                    print("❌ Invalid note number.\n")
+            except ValueError:
+                print("❌ Please enter a valid note number")
     elif choice == 5:
         print('🗑️ You chose to delete a note.\n')
     elif choice == 6:
